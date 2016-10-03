@@ -2,16 +2,20 @@
 #include "myGLWindow.h"
 #include <cassert>
 #include <math\Vector2D.h>
+#include <Qt\qdebug.h>
 using Math::Vector2D;
+namespace {
+	static Vector2D verts[] =
+	{
+		Vector2D(+0.0f, +0.1),
+		Vector2D(-0.1f, -0.1f),
+		Vector2D(+0.1f, -0.1f),
+	};
+	Vector2D shipPosition(0.0f, 0.0f);
+	static const unsigned int NUM_VERTS = sizeof(verts) / sizeof(*verts);
 
-static Vector2D verts[] =
-{
-	Vector2D(+0.0f, +0.1),
-	Vector2D(-0.1f, -0.1f),
-	Vector2D(+0.1f, -0.1f),
-};
+}
 
-static const unsigned int NUM_VERTS = sizeof(verts) / sizeof(*verts);
 void MyGLWindow::initializeGL()
 {
 	GLenum errorCode = glewInit();
@@ -38,7 +42,7 @@ void MyGLWindow::paintGL()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
-	Vector2D shipPosition(0.5f, 0.5f);
+
 
 	Vector2D translatedVerts[NUM_VERTS];
 
@@ -46,11 +50,22 @@ void MyGLWindow::paintGL()
 	{
 		translatedVerts[i] = verts[i] + shipPosition;
 	}
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(translatedVerts), translatedVerts);
+	glBufferSubData(GL_ARRAY_BUFFER, 0,
+		sizeof(translatedVerts),
+		translatedVerts);
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
-int debugCount = 0;
+
+
+int debugInt = 1;
 void MyGLWindow::myUpdate() {
-	
+
+	if (debugInt++ % 20 == 0) {
+		for (int i = 0; i < 1000; i++)
+			qDebug() << "Hello " << i;
+	}
+	Vector2D velocity(0.0001f, 0.0001f);
+	shipPosition = shipPosition + velocity;
+	repaint();
 }

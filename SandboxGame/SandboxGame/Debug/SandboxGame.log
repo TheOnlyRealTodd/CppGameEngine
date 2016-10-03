@@ -1,8 +1,3 @@
 ﻿  SandboxGame.cpp
-  MyGLWindow_moc.cpp
-  myGLWindow.cpp
-d:\projects\gameengine\engine\engine\math\vector2d.h(16): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-d:\projects\gameengine\sandboxgame\sandboxgame\myglwindow.cpp(9): warning C4305: 'argument': truncation from 'double' to 'float'
-  Generating Code...
   SandboxGame.vcxproj -> D:\Projects\GameEngine\SandboxGame\Debug\SandboxGame.exe
   SandboxGame.vcxproj -> D:\Projects\GameEngine\SandboxGame\Debug\SandboxGame.pdb (Full PDB)
