@@ -1,0 +1,4 @@
+﻿  Vector2DTests.cpp
+d:\projects\gameengine\engine\engine\math\vector2d.h(16): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  EngineTester.vcxproj -> D:\Projects\GameEngine\SandboxGame\Debug\EngineTester.exe
+  EngineTester.vcxproj -> D:\Projects\GameEngine\SandboxGame\Debug\EngineTester.pdb (Full PDB)
